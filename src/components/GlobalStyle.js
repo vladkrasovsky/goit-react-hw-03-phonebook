@@ -15,4 +15,34 @@ export const GlobalStyle = createGlobalStyle`
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
       monospace;
   }
+
+  button {
+    font-size: 14px;
+
+    background-color: white;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+
+    user-select: none;
+    cursor: pointer;
+
+    transition: 200ms ease;
+    transition-property: background-color, border-color, color;
+
+    :hover,
+    :focus,
+    :active {
+      background-color: #ff6b08;
+      border-color: #ff6b08;
+      color: white;
+    }
+  }
+
+  input {
+    border: 1px solid lightgray;
+  }
+
+  label > span {
+    display: block;
+  }
 `;
