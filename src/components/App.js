@@ -27,9 +27,9 @@ class App extends Component {
       number,
     };
 
-    if (!this.validateContact(contact)) {
+    if (this.checkIsInContacts(contact)) {
       alert(`${name} is already in contacts.`);
-      return false;
+      return null;
     }
 
     this.setState(({ contacts }) => ({
@@ -45,11 +45,11 @@ class App extends Component {
     }));
   };
 
-  validateContact = ({ name }) => {
+  checkIsInContacts = ({ name }) => {
     const { contacts } = this.state;
     const normalizedName = name.toLowerCase();
 
-    return !contacts.some(({ name }) =>
+    return contacts.some(({ name }) =>
       name.toLowerCase().includes(normalizedName)
     );
   };

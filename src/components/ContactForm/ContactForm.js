@@ -17,9 +17,11 @@ class ContactForm extends Component {
   handleSubmit = e => {
     e.preventDefault();
 
-    const isValid = this.props.onSubmit(this.state.name, this.state.number);
+    const isSuccess = this.props.onSubmit(this.state.name, this.state.number);
 
-    isValid && this.setState({ name: '', number: '' });
+    if (!isSuccess) return;
+
+    this.setState({ name: '', number: '' });
   };
 
   render = () => {
