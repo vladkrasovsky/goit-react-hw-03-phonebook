@@ -65,9 +65,7 @@ class App extends Component {
     );
   };
 
-  changeFilter = e => {
-    this.setState({ filter: e.currentTarget.value });
-  };
+  getFilter = filter => this.setState({ filter });
 
   getVisibleContacts = () => {
     const { filter, contacts } = this.state;
@@ -91,7 +89,7 @@ class App extends Component {
 
         <Section title="Contacts">
           {contacts.length > 0 && (
-            <Filter value={filter} onChange={this.changeFilter} />
+            <Filter value={filter} onFilter={this.getFilter} />
           )}
 
           {visibleContacts.length > 0 ? (
