@@ -30,16 +30,18 @@ class App extends Component {
   }
 
   addContact = (name, number) => {
+    const isInContacts = this.checkIsInContacts(name);
+
+    if (isInContacts) {
+      alert(`${name} is already in contacts.`);
+      return null;
+    }
+
     const contact = {
       id: nanoid(),
       name,
       number,
     };
-
-    if (this.checkIsInContacts(contact)) {
-      alert(`${name} is already in contacts.`);
-      return null;
-    }
 
     this.setState(({ contacts }) => ({
       contacts: [contact, ...contacts],
@@ -54,7 +56,7 @@ class App extends Component {
     }));
   };
 
-  checkIsInContacts = ({ name }) => {
+  checkIsInContacts = name => {
     const { contacts } = this.state;
     const normalizedName = name.toLowerCase();
 
